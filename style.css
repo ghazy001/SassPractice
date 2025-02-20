@@ -1,42 +1,110 @@
+@charset "UTF-8";
 body {
-  font-family: "Arial", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
 }
 
+/* Ajout d'un effet de bulles animées en arrière-plan */
+body::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  top: 10%;
+  left: 10%;
+  filter: blur(100px);
+  animation: float 6s infinite alternate ease-in-out;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  bottom: 10%;
+  right: 10%;
+  filter: blur(120px);
+  animation: float 8s infinite alternate ease-in-out;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(20px);
+  }
+}
+/* Style de la carte en verre */
 .profile-card {
-  width: 300px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  width: 350px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: "Arial", sans-serif;
-  color: #333;
-}
-.profile-card .profile-img {
-  width: 100%;
-}
-.profile-card .profile-img img {
-  width: 100%;
-  height: auto;
-}
-.profile-card .profile-info {
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 1s ease-out forwards;
+  transform: scale(0.9);
+  opacity: 0;
 }
-.profile-card .profile-info h2 {
-  margin: 0;
-  font-size: 24px;
-  color: blue;
+.profile-card:hover {
+  transform: scale(1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
-.profile-card .profile-info p {
-  margin: 10px 0;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.profile-img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  padding: 20px;
+  /* Style du bouton avec effet dynamique */
+}
+.profile-info h2 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 15px;
+}
+.profile-info p {
   font-size: 16px;
+  color: #ddd;
+  margin-bottom: 20px;
 }
-.profile-card .profile-info .btn-primary {
+.profile-info .btn-primary {
   background-color: blue;
   color: #fff;
   padding: 10px 20px;
@@ -45,9 +113,20 @@ body {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0, 0, 255, 0.4);
+  border-radius: 30px;
+  padding: 12px 24px;
+  font-size: 18px;
+  transition: all 0.3s ease, box-shadow 0.3s ease;
 }
-.profile-card .profile-info .btn-primary:hover {
+.profile-info .btn-primary:hover {
   background-color: rgb(0, 0, 229.5);
+}
+.profile-info .btn-primary:hover {
+  transform: scale(1.05);
+  background-color: #0000cc;
+  box-shadow: 0 8px 20px rgba(0, 0, 255, 0.6);
 }
 
 /*# sourceMappingURL=style.css.map */
